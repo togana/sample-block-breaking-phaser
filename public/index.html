@@ -100,6 +100,11 @@
         location.reload();
       }
     }
+    function startGame() {
+      startButton.destroy();
+      ball.body.velocity.set(150, -150);
+      playing = true;
+    }
     function preload() {
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
       game.scale.pageAlignHorizontally = true;
@@ -136,6 +141,9 @@
       lifeLostText = game.add.text(game.world.width * 0.5, game.world.height * 0.5, 'Life lost, click to continue', { font: '18px Arial', fill: '#0095DD' });
       lifeLostText.anchor.set(0.5);
       lifeLostText.visible = false;
+
+      startButton = game.add.button(game.world.width * 0.5, game.world.height * 0.5, 'button', startGame, this, 1, 0, 2);
+      startButton.anchor.set(0.5);
     }
     function update() {
       game.physics.arcade.collide(ball, paddle, ballHitPaddle);
