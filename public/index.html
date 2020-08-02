@@ -123,7 +123,6 @@
       ball.animations.add('wobble', [0, 1, 0, 2, 0, 1, 0, 2, 0], 24);
       ball.anchor.set(0.5);
       game.physics.enable(ball, Phaser.Physics.ARCADE);
-      ball.body.velocity.set(150, -150);
       ball.body.collideWorldBounds = true;
       ball.body.bounce.set(1);
       ball.checkWorldBounds = true;
@@ -148,7 +147,9 @@
     function update() {
       game.physics.arcade.collide(ball, paddle, ballHitPaddle);
       game.physics.arcade.collide(ball, bricks, ballHitBrick);
-      paddle.x = game.input.x || game.world.width * 0.5;
+      if (playing) {
+        paddle.x = game.input.x || game.world.width * 0.5;
+      }
     }
   </script>
 </body>
