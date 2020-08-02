@@ -27,6 +27,9 @@
     var brickInfo;
     var scoreText;
     var score = 0;
+    var lives = 3;
+    var livesText;
+    var lifeLostText;
 
     function initBricks() {
       brickInfo = {
@@ -102,6 +105,11 @@
 
       initBricks();
       scoreText = game.add.text(5, 5, 'Points: 0', { font: '18px Arial', fill: '#0095DD' });
+      livesText = game.add.text(game.world.width - 5, 5, 'Lives: ' + lives, { font: '18px Arial', fill: '#0095DD' });
+      livesText.anchor.set(1, 0);
+      lifeLostText = game.add.text(game.world.width * 0.5, game.world.height * 0.5, 'Life lost, click to continue', { font: '18px Arial', fill: '#0095DD' });
+      lifeLostText.anchor.set(0.5);
+      lifeLostText.visible = false;
     }
     function update() {
       game.physics.arcade.collide(ball, paddle);
